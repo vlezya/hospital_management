@@ -1,0 +1,127 @@
+// Colors
+
+$black: #393939;
+$off-white: #ededed;
+$dark-gray: #666;
+$medium-gray: #6c757d;
+$light-gray: #c2c2c2;
+$blue: #237cbe;
+$light-blue: lighten($blue, 40%);
+$orange: #e8890c;
+$yellow: #ffc107;
+$light-yellow: #ffc;
+$red: #dc3545;
+
+// Custom Variables
+
+$secondary-text-color: $medium-gray;
+$accent-color: $orange;
+$secondary-link-color: $light-blue;
+$border-color: $light-gray;
+$error-color: $red;
+$error-background-color: $light-yellow;
+$sold-out-color: $yellow;
+$box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.09);
+
+// Bootstrap Variable Overrides
+
+$body-color: $black;
+$body-bg: $off-white;
+$primary: $blue;
+$secondary: $dark-gray;
+$min-contrast-ratio: 4;
+$input-bg: white;
+
+// Import Bootstrap Styles
+
+@import "bootstrap";
+
+// Custom CSS
+
+.content {
+  @extend .container;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+// Header and Nav
+
+header {
+  background-color: $primary;
+  padding: 0.5rem;
+  margin-bottom: 3rem;
+
+  nav {
+    @extend .navbar, .navbar-expand-md;
+
+    img {
+      height: 50px;
+      margin-right: 0.5rem;
+    }
+
+    a {
+      color: $secondary-link-color;
+    }
+
+    a.button {
+      @extend .btn, .btn-outline-secondary;
+    }
+
+    ul {
+      @extend .nav, .navbar-nav;
+      letter-spacing: 1px;
+
+      &.left {
+        @extend .me-auto;
+        padding: 1rem;
+      }
+
+      &.right {
+        @extend .ms-auto;
+      }
+
+      li {
+        @extend .nav-item;
+        font-size: 1.1rem;
+        margin-right: 5px;
+
+        a {
+          @extend .nav-link;
+          color: $secondary-link-color;
+          padding-bottom: 1px;
+        }
+
+        a:hover:not(.button),
+        a.active {
+          color: $off-white;
+          text-decoration: none;
+          border-bottom: 1px solid $off-white;
+        }
+
+        .button,
+        button {
+          margin-right: 10px;
+          color: $off-white;
+          border-color: $off-white;
+        }
+
+        .button:hover,
+        button:hover {
+          background: $off-white;
+          color: $primary;
+          border-color: $primary;
+        }
+
+        button {
+          @extend .btn, .btn-outline-secondary;
+        }
+      }
+    }
+  }
+}

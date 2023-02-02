@@ -125,3 +125,189 @@ header {
     }
   }
 }
+
+// Index Page
+
+section.user {
+  @extend .row;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1em;
+  border-bottom: 1px dotted $border-color;
+
+  &:nth-last-child(1) {
+    border-bottom: none;
+  }
+
+  .image {
+    @extend .col-md-3, .text-center;
+    img {
+      width: 100px;
+      box-shadow: $box-shadow;
+    }
+  }
+
+  .summary {
+    @extend .col-md-9, .text-start;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    color: $secondary-text-color;
+    font-weight: 400;
+  }
+
+  p {
+    margin-top: 1.1rem;
+  }
+}
+
+
+// Aside
+
+aside {
+  h4 {
+    color: $secondary-text-color;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding-bottom: 0.3rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid $border-color;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0.25rem;
+
+    li {
+      padding-bottom: 0.5rem;
+    }
+  }
+}
+
+// Flashes
+
+.flash {
+  @extend .alert;
+  text-align: center;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+
+  &.notice {
+    @extend .alert-success;
+  }
+
+  &.alert {
+    @extend .alert-danger;
+  }
+}
+
+// Errors
+
+section.errors {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  border-radius: 0.3rem;
+  background: $error-background-color;
+
+  h2 {
+    color: $error-color;
+    font-size: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+}
+
+// Show Page
+
+section.user-details {
+  @extend .row;
+
+  .image {
+    @extend .col-md-3, .text-start;
+
+    input[type="submit"] {
+      margin-top: 1rem;
+    }
+  }
+
+  .details {
+    @extend .col-md-7, .text-start;
+  }
+
+  aside {
+    @extend .col-md-2;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    color: $secondary-text-color;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    color: $secondary-text-color;
+    font-weight: 300;
+  }
+
+  table {
+    td {
+      padding-top: 0.35rem;
+      padding-bottom: 0.35rem;
+    }
+    th {
+      padding-right: 1rem;
+    }
+  }
+
+  .faves {
+    @extend .input-group;
+    margin-top: 1rem;
+
+    .count {
+      @extend .input-group-text;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    button[type="submit"] {
+      @extend .btn, .btn-outline-secondary;
+      border-color: #cdd3d8;
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin-top: 0;
+    }
+  }
+
+  p {
+    margin-top: 1rem;
+    font-size: 1.15em;
+  }
+
+  img {
+    margin-top: 0.5rem;
+    width: 150px;
+    box-shadow: $box-shadow;
+  }
+
+  a.appointment {
+    @extend .btn, .btn-success;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+}

@@ -1,14 +1,16 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Doctors</h1>
-
-<div id="doctors">
-  <% @doctors.each do |doctor| %>
-    <%= render doctor %>
-    <p>
-      <%= link_to "Show this doctor", doctor %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New doctor", new_doctor_path %>
+<% @doctors.each do |doctor| %>
+  <section class="user">
+    <div class="image">
+      <%= image_tag 'doctor.png' %>
+    </div>
+    <div class="summary">
+      <h2>
+        <%= link_to "#{doctor.first_name} #{doctor.last_name}", doctor %>
+      </h2>
+      <h4>
+        <%= doctor.category.name %>
+      </h4>
+    </div>
+  </section>
+<% end %>

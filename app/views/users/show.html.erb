@@ -1,10 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @user %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
-</div>
+<section class="user-details">
+  <div class="image">
+    <%= image_tag 'placeholder.png' %>
+  </div>
+  <div class="details">
+    <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+    <h2>
+      <span>Phone number: </span><%= @user.phone %>
+    </h2>
+    
+    <%= link_to "Edit Profile", edit_user_path(@user), class: 'button' %> |
+    <%= link_to "Destroy Profile", @user, method: :delete, class: 'button' %> |
+    <%= link_to "Homepage", root_path, class: 'button' %>
+  </div>
+  
+  <aside>
+    <% if user_signed_in? && @user.doctors.present? %>
+      <h4>Patients</h4>
+      <ul>
+        <% @user.doctors.each do |doctor| %>
+          <li>
+            <%= link_to "#{doctor.first_name} #{doctor.last_name}", doctor %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </aside>
+</section>

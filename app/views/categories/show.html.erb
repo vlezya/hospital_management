@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @category %>
-
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
-
-  <%= button_to "Destroy this category", @category, method: :delete %>
-</div>
+<% if @category.doctors.present? %>
+  <% @category.doctors.each do |doctor| %>
+    <section class="user-details">
+      <div class="image">
+        <%= image_tag 'doctor.png' %>
+      </div>
+      <div class="details">
+        <h1><%= "#{doctor.first_name} #{doctor.last_name}" %></h1>
+        <h2>
+          <span>Phone number: </span><%= doctor.phone %>
+        </h2>
+        <p>
+          <%= link_to "Back to doctors", doctors_path %>
+        </p>
+      </div>
+    </section>
+  <% end %>
+<% end %>

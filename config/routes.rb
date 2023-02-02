@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  root "home#index"
+  
   resources :categories
-  resources :appointments
+  
   devise_for :doctors
-  resources :doctors
+  resources :doctors do
+    resources :appointments
+  end
+  
   devise_for :users
   resources :users
-  root "home#index"
 end

@@ -5,10 +5,7 @@
         <%= image_tag 'doctor.png' %>
       </div>
       <div class="details">
-        <h1><%= "#{doctor.first_name} #{doctor.last_name}" %></h1>
-        <h2>
-          <span>Phone number: </span><%= doctor.phone %>
-        </h2>
+        <h1><%= link_to "#{doctor.first_name} #{doctor.last_name}", doctor %></h1>
         <p>
           <%= link_to "Back to doctors", doctors_path %>
         </p>

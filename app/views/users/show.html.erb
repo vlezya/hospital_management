@@ -4,22 +4,37 @@
   </div>
   <div class="details">
     <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
-    <h2>
+    <h3>
       <span>Phone number: </span><%= @user.phone %>
-    </h2>
+    </h3>
+    <h3>
+      <span>Date of birthday: </span><%= @user.date_of_birth %>
+    </h3>
     
-    <%= link_to "Edit Profile", edit_user_path(@user), class: 'button' %> |
-    <%= link_to "Destroy Profile", @user, method: :delete, class: 'button' %> |
-    <%= link_to "Homepage", root_path, class: 'button' %>
+    <% if user_signed_in? %>
+      <%= link_to "Edit Profile", edit_user_path(@user), class: 'btn-success' %>
+      <%= link_to "Destroy Profile", @user, method: :delete, class: 'btn-danger' %>
+    <% end %>
+    <%= link_to "Back home", root_path, class: 'btn-warning' %>
   </div>
   
   <aside>
-    <% if user_signed_in? && @user.doctors.present? %>
-      <h4>Patients</h4>
+    <% if user_signed_in? && @user.appointments.present? %>
+      <h4><span>Appointments</span></h4>
       <ul>
-        <% @user.doctors.each do |doctor| %>
+        <% @user.appointments.each do |appointment| %>
+          <br>
           <li>
-            <%= link_to "#{doctor.first_name} #{doctor.last_name}", doctor %>
+            <span>Date: </span> <%= appointment.appointment_date %>
+          </li>
+          <li>
+            <span>Description: </span> <%= appointment.description %>
+          </li>
+          <li>
+            <span>Status: </span> <%= appointment.status %>
+          </li>
+          <li>
+            <span>Doctor: </span><%= link_to "#{appointment.doctor.first_name} #{appointment.doctor.last_name}", appointment.doctor %>
           </li>
         <% end %>
       </ul>

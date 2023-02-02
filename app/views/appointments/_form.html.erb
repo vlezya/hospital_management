@@ -1,0 +1,16 @@
+<%= form_with(model: [@doctor, @appointment]) do |form| %>
+  <%= render 'shared/errors', object: appointment %>
+  <div>
+    <%= form.label :appointment_date, style: "display: block" %>
+    <%= form.datetime_field :appointment_date %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

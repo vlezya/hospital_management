@@ -12,21 +12,37 @@
       <span>Phone number: </span><%= @doctor.phone %>
     </h2>
     
-    <p>
-      <%= link_to "Back to doctors", doctors_path %>
-    </p>
+    <% if user_signed_in? %>
+      <%= link_to 'Create appointment', new_doctor_appointment_path(@doctor),
+            class: 'btn-success' %>
+    <% end %>
+    <%= link_to "Back to home", root_path, class: 'btn-warning' %>
   </div>
   
   <aside>
-    <% if doctor_signed_in? && @doctor.users.present? %>
-      <h4>Patients</h4>
+    <% if doctor_signed_in? && @doctor.appointments.present? %>
+      <h4>Appointments</h4>
       <ul>
-        <% @doctor.users.each do |patient| %>
+        <% @doctor.appointments.each do |appointment| %>
+           <br>
           <li>
-            <%= link_to "#{patient.first_name} #{patient.last_name}", patient %>
+            <span>Date: </span> <%= appointment.appointment_date %>
+          </li>
+          
+          <% unless appointment.description.blank? %>
+            <li>
+              <span>Description: </span> <%= appointment.description %>
+            </li>
+          <% end %>
+          <li>
+            <span>Status: </span> <%= appointment.status %>
+          </li>
+          <li>
+            <span>Patient: </span><%= link_to "#{appointment.user.first_name} #{appointment.doctor.last_name}", appointment.user %>
           </li>
         <% end %>
       </ul>
     <% end %>
   </aside>
+
 </section>

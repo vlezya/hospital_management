@@ -4,7 +4,7 @@
     <% if user_signed_in? %>
       <ul class="left">
         <li>
-          <%= link_to "Profile", '#', class: "button" %>
+          <%= link_to "Profile", user_path(current_user), class: "button" %>
         </li>
       </ul>
       <ul class="right">

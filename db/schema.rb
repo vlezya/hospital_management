@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_02_151759) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_02_160333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,8 +44,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_151759) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_doctors_on_category_id"
     t.index ["phone"], name: "index_doctors_on_phone", unique: true
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
+  end
+
+  create_table "doctors_users", id: false, force: :cascade do |t|
+    t.bigint "doctor_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["doctor_id", "user_id"], name: "index_doctors_users_on_doctor_id_and_user_id"
+    t.index ["user_id", "doctor_id"], name: "index_doctors_users_on_user_id_and_doctor_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,4 +75,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_02_151759) do
 
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "users"
+  add_foreign_key "doctors", "categories"
 end

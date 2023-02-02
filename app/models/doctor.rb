@@ -2,6 +2,9 @@ class Doctor < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  belongs_to :category
+  has_and_belongs_to_many :users
+  
   validates :phone, uniqueness: true
   
   def email_required?

@@ -27,9 +27,11 @@
           <li>
             <span>Date: </span> <%= appointment.appointment_date %>
           </li>
-          <li>
-            <span>Description: </span> <%= appointment.description %>
-          </li>
+          <% unless appointment.description.blank? %>
+            <li>
+              <span>Description: </span> <%= appointment.description %>
+            </li>
+          <% end %>
           <li>
             <span>Status: </span> <%= appointment.status %>
           </li>

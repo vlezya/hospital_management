@@ -1,4 +1,5 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     actioncable (7.0.4.2)
       actionpack (= 7.0.4.2)
@@ -69,6 +70,22 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.704.0)
+    aws-sdk-core (3.170.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.5)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.62.0)
+      aws-sdk-core (~> 3, >= 3.165.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.119.0)
+      aws-sdk-core (~> 3, >= 3.165.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.5.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -100,6 +117,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    dockerfile-rails (1.0.5)
+      rails
     erubi (1.12.0)
     execjs (2.8.1)
     factory_bot (6.2.1)
@@ -123,6 +142,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.2)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -267,11 +287,13 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap
   bootstrap (~> 5.2, >= 5.2.3)
   capybara
   debug
   devise
+  dockerfile-rails (~> 1.0, >= 1.0.5)
   factory_bot_rails
   faker
   importmap-rails

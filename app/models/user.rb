@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
   PHONE_NUMBER_REGEX = /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/
   
-  validate :acceptable_image
+  # validate :acceptable_image
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :phone, uniqueness: true, presence: true, length: { maximum: 15 },

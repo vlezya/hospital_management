@@ -1,6 +1,6 @@
-# fly.toml file generated for hospital-ms-app on 2023-02-03T18:11:46+02:00
+# fly.toml file generated for my-hospital-system on 2023-02-03T21:30:01+02:00
 
-app = "hospital-ms-app"
+app = "my-hospital-system"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

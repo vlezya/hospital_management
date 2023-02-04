@@ -1,8 +1,8 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: %i[ show edit update destroy ]
+  before_action :set_appointment
 
   def index
-    @appointments = Appointment.all
+    @appointments = @doctor.appointments
   end
 
   def show
@@ -17,12 +17,11 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @doctor = Doctor.find(params[:doctor_id])
     @appointment =  @doctor.appointments.new(appointment_params)
     @appointment.user = current_user
 
     if @appointment.save
-      redirect_to current_user, notice: "Appointment was successfully created."
+      redirect_to @appointment.user, notice: "Appointment was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,7 +42,7 @@ class AppointmentsController < ApplicationController
 
   private
     def set_appointment
-      @appointment = Appointment.find(params[:id])
+      @doctor = Doctor.find(params[:doctor_id])
     end
 
     def appointment_params
